@@ -47,7 +47,7 @@ app.post(
       const workbook = XLSX.read(req.file.buffer, { type: "buffer" });
 
       // Generate new filename
-      const newFileName = `copy_${Date.now()}.xlsx`;
+      const newFileName = `copy_${Date.now()}.${req.file.originalname.toLowerCase().includes("xlsx") ? "xlsx" : "xlsm"}`;
       const newFilePath = path.join(uploadDir, newFileName);
 
       // Save copied file
@@ -71,6 +71,8 @@ app.post(
     }
   }
 );
+
+app.get("/", (req, res) => res.json({success: true}));
 
 // Global error handler
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
