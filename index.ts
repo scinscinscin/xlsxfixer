@@ -7,7 +7,7 @@ import path from "path";
 const app = express();
 const PORT = 3000;
 
-const uploadDir = path.join(__dirname, "../uploads");
+const uploadDir = path.join(__dirname, "./uploads");
 
 // Ensure uploads directory exists
 async function ensureUploadDir(): Promise<void> {
