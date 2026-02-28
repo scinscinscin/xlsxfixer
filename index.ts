@@ -47,6 +47,7 @@ app.post(
       const workbook = XLSX.read(req.file.buffer, { type: "buffer" });
 
       // Generate new filename
+      // @ts-ignore
       const newFileName = `copy_${Date.now()}.${req.file.originalname.toLowerCase().includes("xlsx") ? "xlsx" : "xlsm"}`;
       const newFilePath = path.join(uploadDir, newFileName);
 
