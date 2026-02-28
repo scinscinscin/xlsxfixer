@@ -37,10 +37,12 @@ app.post(
   upload.single("file"),
   async (req: Request, res: Response, next: NextFunction) => {
     try {
+      // @ts-ignore
       if (!req.file) {
         return res.status(400).send("No file uploaded");
       }
 
+      // @ts-ignore
       // Load workbook from memory
       const workbook = XLSX.read(req.file.buffer, { type: "buffer" });
 
